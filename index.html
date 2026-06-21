@@ -326,6 +326,37 @@
   .btn-link.blue { background: var(--col-blue-light); color: var(--col-blue); border-color: #b8cfe4; }
   .btn-link.blue:hover { background: #ccdff0; }
 
+  /* YAMAP BANNER */
+  .yamap-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #1a7a4a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    text-decoration: none;
+    color: #fff;
+    transition: background .15s;
+    flex-wrap: wrap;
+  }
+  .yamap-banner:hover { background: #15693e; }
+  .yamap-banner-left { display: flex; align-items: center; gap: 12px; }
+  .yamap-banner-icon { font-size: 28px; line-height: 1; }
+  .yamap-banner-title { font-size: 15px; font-weight: 700; }
+  .yamap-banner-sub { font-size: 12px; opacity: .85; margin-top: 2px; }
+  .yamap-banner-btn {
+    background: #fff;
+    color: #1a7a4a;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   /* FOOTER */
   footer {
     text-align: center;
@@ -356,6 +387,18 @@
 </div>
 
 <div class="container">
+
+  <!-- YAMAP -->
+  <a href="https://yamap.com/plans/code/4X5pOqQ9NGNFrcTtMH4p8t_qGNKMftP_w3i0xvoESuSHxiqXr3ihfEhESPXx8ezboOI" target="_blank" class="yamap-banner">
+    <div class="yamap-banner-left">
+      <div class="yamap-banner-icon">🗺️</div>
+      <div>
+        <div class="yamap-banner-title">YAMAP 登山計画</div>
+        <div class="yamap-banner-sub">ルート・登山届はこちら　／　メンバー全員で確認してください</div>
+      </div>
+    </div>
+    <div class="yamap-banner-btn">計画を開く ↗</div>
+  </a>
 
   <!-- スケジュール -->
   <div class="section">
