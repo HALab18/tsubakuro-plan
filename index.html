@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燕岳登山プラン 2025.7.18-20</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap');
+
+  :root {
+    --col-bg: #f5f7f4;
+    --col-surface: #ffffff;
+    --col-border: #dde3d8;
+    --col-text: #1e2a1a;
+    --col-muted: #5a6b54;
+    --col-faint: #8a9b84;
+    --col-accent: #3d6b35;
+    --col-accent-light: #e8f0e5;
+    --col-blue: #2a5280;
+    --col-blue-light: #e4ecf5;
+    --col-amber: #7a5500;
+    --col-amber-light: #fdf3dc;
+    --col-red: #8b2020;
+    --col-red-light: #fdeaea;
+    --col-teal: #1a5c52;
+    --col-teal-light: #e2f4f1;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--col-bg);
+    color: var(--col-text);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--col-accent);
+    color: #fff;
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.03) 20px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    opacity: .7;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: 14px;
+    opacity: .8;
+    margin-bottom: 24px;
+  }
+  .hero-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 16px 64px;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 36px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--col-accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--col-border);
+  }
+
+  /* CARD */
+  .card {
+    background: var(--col-surface);
+    border: 1px solid var(--col-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .card-header {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-header.day1 { background: var(--col-blue-light); color: var(--col-blue); }
+  .card-header.day2 { background: var(--col-accent-light); color: var(--col-accent); }
+
+  /* SCHEDULE ROWS */
+  .sch-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    border-top: 1px solid var(--col-border);
+  }
+  .sch-row:first-of-type { border-top: none; }
+  .sch-time {
+    padding: 10px 12px 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--col-muted);
+    border-right: 1px solid var(--col-border);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 12px;
+  }
+  .sch-body {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  .sch-main { font-weight: 500; color: var(--col-text); }
+  .sch-note { font-size: 11px; color: var(--col-faint); margin-top: 2px; }
+  .sch-row.hl-bus { background: var(--col-blue-light); }
+  .sch-row.hl-bus .sch-time { color: var(--col-blue); border-right-color: #c0d2e8; }
+  .sch-row.hl-hike { background: var(--col-accent-light); }
+  .sch-row.hl-hike .sch-time { color: var(--col-accent); border-right-color: #c4d9be; }
+  .sch-row.hl-onsen { background: var(--col-amber-light); }
+  .sch-row.hl-onsen .sch-time { color: var(--col-amber); border-right-color: #e8d8a0; }
+
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .badge-bus { background: var(--col-blue-light); color: var(--col-blue); }
+  .badge-hike { background: var(--col-accent-light); color: var(--col-accent); }
+  .badge-onsen { background: var(--col-amber-light); color: var(--col-amber); }
+  .badge-lunch { background: var(--col-teal-light); color: var(--col-teal); }
+  .badge-warn { background: var(--col-red-light); color: var(--col-red); }
+  .badge-ok { background: var(--col-accent-light); color: var(--col-accent); }
+
+  /* BUS TABLE */
+  .bus-table { width: 100%; border-collapse: collapse; }
+  .bus-table th {
+    background: var(--col-bg);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--col-muted);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--col-border);
+  }
+  .bus-table td {
+    padding: 9px 12px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--col-border);
+    vertical-align: middle;
+  }
+  .bus-table tr:last-child td { border-bottom: none; }
+  .bus-table tr.star { background: var(--col-blue-light); }
+  .bus-table tr.star td { color: var(--col-blue); font-weight: 700; }
+  .bus-note { font-size: 11px; color: var(--col-faint); }
+
+  /* INFO ROWS */
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 16px;
+    border-top: 1px solid var(--col-border);
+    font-size: 13px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .info-row:first-of-type { border-top: none; }
+  .info-label { color: var(--col-muted); flex: 1; min-width: 120px; }
+  .info-val { font-weight: 500; color: var(--col-text); }
+  .info-sub { font-size: 11px; color: var(--col-faint); }
+
+  /* COST TABLE */
+  .cost-section { margin-bottom: 8px; }
+  .cost-head {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--col-muted);
+    background: var(--col-bg);
+    padding: 6px 16px;
+    border-top: 1px solid var(--col-border);
+  }
+  .cost-head:first-child { border-top: none; }
+  .cost-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    background: var(--col-accent-light);
+    color: var(--col-accent);
+  }
+
+  /* METRIC GRID */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .metric-card {
+    background: var(--col-surface);
+    border: 1px solid var(--col-border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .metric-label { font-size: 11px; color: var(--col-muted); margin-bottom: 4px; }
+  .metric-val { font-size: 22px; font-weight: 700; color: var(--col-text); }
+  .metric-sub { font-size: 11px; color: var(--col-faint); margin-top: 2px; }
+
+  /* LINKS */
+  .link-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  @media (max-width: 500px) { .link-grid { grid-template-columns: 1fr; } }
+  .link-card {
+    background: var(--col-surface);
+    border: 1px solid var(--col-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--col-text);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color .15s, background .15s;
+  }
+  .link-card:hover { border-color: var(--col-accent); background: var(--col-accent-light); }
+  .link-name { font-size: 13px; font-weight: 700; color: var(--col-accent); }
+  .link-desc { font-size: 11px; color: var(--col-muted); }
+  .link-url { font-size: 10px; color: var(--col-faint); margin-top: 2px; word-break: break-all; }
+
+  /* WARN */
+  .warn-list { display: flex; flex-direction: column; gap: 6px; }
+  .warn-item {
+    background: var(--col-red-light);
+    border: 1px solid #e8c0c0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--col-red);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .warn-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+  /* FACILITY HEADER */
+  .facility-title {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 1px solid var(--col-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .btn-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .btn-link {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    background: var(--col-accent-light);
+    color: var(--col-accent);
+    border: 1px solid #c4d9be;
+    transition: background .15s;
+  }
+  .btn-link:hover { background: #d0e6c8; }
+  .btn-link.blue { background: var(--col-blue-light); color: var(--col-blue); border-color: #b8cfe4; }
+  .btn-link.blue:hover { background: #ccdff0; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 11px;
+    color: var(--col-faint);
+    border-top: 1px solid var(--col-border);
+  }
+
+  @media (max-width: 480px) {
+    .sch-row { grid-template-columns: 80px 1fr; }
+    .metric-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">登山プラン 2026</div>
+  <div class="hero-title">燕岳 1泊2日</div>
+  <div class="hero-sub">仙台 → 道の駅にしあいづ → 穂高 → 燕山荘</div>
+  <div class="hero-pills">
+    <span class="hero-pill">7月18日（土）深夜出発</span>
+    <span class="hero-pill">7月19日（日）登山</span>
+    <span class="hero-pill">7月20日（月・海の日）下山</span>
+    <span class="hero-pill">3名</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- スケジュール -->
+  <div class="section">
+    <div class="section-label">タイムスケジュール</div>
+
+    <div class="card">
+      <div class="card-header day1">1日目　7月18日（土）深夜 → 7月19日（日）</div>
+      <div class="sch-row">
+        <div class="sch-time">0:00〜0:30</div>
+        <div class="sch-body">
+          <div class="sch-main">仙台出発</div>
+          <div class="sch-note">東北道→磐越道　深夜割引適用（全区間30%引き）</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">2:00 確定</div>
+        <div class="sch-body">
+          <div class="sch-main">道の駅にしあいづ　集合・2名ピックアップ</div>
+          <div class="sch-note">磐越道 西会津IC すぐ　15分停車後出発</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">2:15頃</div>
+        <div class="sch-body">
+          <div class="sch-main">出発</div>
+          <div class="sch-note">磐越道→北陸道→上信越道→長野道</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">6:00〜6:10</div>
+        <div class="sch-body">
+          <div class="sch-main">安曇野IC出口</div>
+          <div class="sch-note">一般道へ　穂高まで約20〜25分</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">6:20〜6:30</div>
+        <div class="sch-body">
+          <div class="sch-main">タイムズ安曇野穂高（穂高駅前）駐車</div>
+          <div class="sch-note">最大500円/日　バス停まで徒歩6分（約450m）</div>
+        </div>
+      </div>
+      <div class="sch-row hl-bus">
+        <div class="sch-time">6:40発</div>
+        <div class="sch-body">
+          <div class="sch-main">定期バス乗車　穂高駅 → 中房温泉<span class="badge badge-bus">バス</span></div>
+          <div class="sch-note">南安タクシー運行　所要55分　1,500円/人</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">7:35着</div>
+        <div class="sch-body">
+          <div class="sch-main">中房温泉（燕岳登山口）着</div>
+          <div class="sch-note">標高1,450m</div>
+        </div>
+      </div>
+      <div class="sch-row hl-hike">
+        <div class="sch-time">7:45頃</div>
+        <div class="sch-body">
+          <div class="sch-main">登山開始　合戦尾根ルート<span class="badge badge-hike">登山</span></div>
+          <div class="sch-note">北アルプス三大急登　CT約5時間20分　標高差1,300m</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">10:30〜11:00</div>
+        <div class="sch-body">
+          <div class="sch-main">合戦小屋　休憩・補給</div>
+          <div class="sch-note">名物スイカあり</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">12:30〜13:00</div>
+        <div class="sch-body">
+          <div class="sch-main">燕山荘着　チェックイン</div>
+          <div class="sch-note">標高2,712m</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">17:00〜18:00</div>
+        <div class="sch-body">
+          <div class="sch-main">夕食</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">20:00頃</div>
+        <div class="sch-body">
+          <div class="sch-main">就寝</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header day2">2日目　7月20日（月・海の日・祝日）</div>
+      <div class="sch-row">
+        <div class="sch-time">4:30〜5:00</div>
+        <div class="sch-body">
+          <div class="sch-main">起床・朝食</div>
+          <div class="sch-note">ご来光（7月の日の出は4:30〜4:45頃）</div>
+        </div>
+      </div>
+      <div class="sch-row hl-hike">
+        <div class="sch-time">6:00〜6:30</div>
+        <div class="sch-body">
+          <div class="sch-main">燕山荘出発　下山開始<span class="badge badge-hike">登山</span></div>
+          <div class="sch-note">CT約3時間30〜40分</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">9:30〜10:10</div>
+        <div class="sch-body">
+          <div class="sch-main">中房温泉（登山口）着</div>
+        </div>
+      </div>
+      <div class="sch-row hl-bus">
+        <div class="sch-time">10:45発</div>
+        <div class="sch-body">
+          <div class="sch-main">定期バス乗車　中房温泉 → 穂高駅<span class="badge badge-bus">バス</span></div>
+          <div class="sch-note">所要55分　1,500円/人　※9:00発も選択可</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">11:40着</div>
+        <div class="sch-body">
+          <div class="sch-main">穂高駅着　車を回収</div>
+        </div>
+      </div>
+      <div class="sch-row hl-onsen">
+        <div class="sch-time">12:00〜13:00</div>
+        <div class="sch-body">
+          <div class="sch-main">大王わさび農場　ランチ<span class="badge badge-lunch">ランチ</span></div>
+          <div class="sch-note">穂高駅から車で約10分　入場無料　わさび丼・わさびそばなど</div>
+        </div>
+      </div>
+      <div class="sch-row hl-onsen">
+        <div class="sch-time">13:00〜14:00</div>
+        <div class="sch-body">
+          <div class="sch-main">安曇野しゃくなげの湯　入浴<span class="badge badge-onsen">温泉</span></div>
+          <div class="sch-note">祝日料金700円/人　中房渓谷引湯の天然温泉</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">14:30〜15:00</div>
+        <div class="sch-body">
+          <div class="sch-main">安曇野出発</div>
+          <div class="sch-note">長野道→上信越道→北陸道→磐越道　3連休最終日・渋滞注意</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">19:00〜19:30</div>
+        <div class="sch-body">
+          <div class="sch-main">道の駅にしあいづ　2名を降ろす</div>
+        </div>
+      </div>
+      <div class="sch-row">
+        <div class="sch-time">21:30〜22:00</div>
+        <div class="sch-body">
+          <div class="sch-main">仙台着</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- バス時刻表 -->
+  <div class="section">
+    <div class="section-label">バス時刻表　穂高駅 ⇔ 中房温泉（2026年）</div>
+    <div style="font-size:12px;color:var(--col-muted);margin-bottom:8px;">片道1,500円・所要55分・予約不要　★は今回乗車予定便</div>
+
+    <div class="card" style="margin-bottom:10px;">
+      <div style="padding:10px 16px;font-size:13px;font-weight:700;color:var(--col-blue);border-bottom:1px solid var(--col-border);">▲ 上り　穂高駅 → 中房温泉</div>
+      <table class="bus-table">
+        <thead>
+          <tr>
+            <th>穂高駅 発</th>
+            <th>中房温泉 着</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4:40</td><td>5:35</td>
+            <td><span class="bus-note">臨時便・繁忙期のみ・運行日要確認</span></td>
+          </tr>
+          <tr>
+            <td>5:15</td><td>6:10</td>
+            <td><span class="bus-note">通常始発（今回は間に合わず）</span></td>
+          </tr>
+          <tr class="star">
+            <td>6:40 ★</td><td>7:35</td>
+            <td>今回乗車・第2便</td>
+          </tr>
+          <tr>
+            <td>8:25</td><td>9:20</td>
+            <td><span class="bus-note">第3便</span></td>
+          </tr>
+          <tr>
+            <td>11:10</td><td>12:05</td>
+            <td><span class="bus-note">第4便</span></td>
+          </tr>
+          <tr>
+            <td>12:55</td><td>13:50</td>
+            <td><span class="bus-note">第5便</span></td>
+          </tr>
+          <tr>
+            <td>14:50</td><td>15:45</td>
+            <td><span class="bus-note">第6便</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div style="padding:10px 16px;font-size:13px;font-weight:700;color:var(--col-accent);border-bottom:1px solid var(--col-border);">▼ 下り　中房温泉 → 穂高駅</div>
+      <table class="bus-table">
+        <thead>
+          <tr>
+            <th>中房温泉 発</th>
+            <th>穂高駅 着</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9:00</td><td>9:55</td>
+            <td><span class="bus-note">第1便（6:00下山開始なら乗れる可能性あり）</span></td>
+          </tr>
+          <tr class="star">
+            <td>10:45 ★</td><td>11:40</td>
+            <td>今回乗車・第2便・余裕あり</td>
+          </tr>
+          <tr>
+            <td>12:25</td><td>13:20</td>
+            <td><span class="bus-note">第3便</span></td>
+          </tr>
+          <tr>
+            <td>14:15</td><td>15:10</td>
+            <td><span class="bus-note">第4便</span></td>
+          </tr>
+          <tr>
+            <td>16:15</td><td>17:10</td>
+            <td><span class="bus-note">第5便</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 施設情報 -->
+  <div class="section">
+    <div class="section-label">施設情報</div>
+
+    <div class="card">
+      <div class="facility-title">
+        <span>燕山荘</span>
+        <div class="btn-links">
+          <a href="https://www.enzanso.co.jp" target="_blank" class="btn-link">公式サイト ↗</a>
+          <a href="https://maps.google.com/?q=燕山荘+長野県" target="_blank" class="btn-link blue">Google マップ ↗</a>
+        </div>
+      </div>
+      <div class="info-row"><span class="info-label">宿泊料金</span><span class="info-val">16,000円/人（1泊2食）</span></div>
+      <div class="info-row"><span class="info-label">標高</span><span class="info-val">2,712m</span></div>
+      <div class="info-row"><span class="info-label">夕食</span><span class="info-val">17:00〜18:00台</span></div>
+      <div class="info-row"><span class="info-label">朝食</span><span class="info-val">5:00〜6:00台</span></div>
+      <div class="info-row"><span class="info-label">予約</span><span class="info-val">公式サイトから要予約</span><span class="info-sub">夏山週末は早期に埋まる</span></div>
+    </div>
+
+    <div class="card">
+      <div class="facility-title">
+        <span>大王わさび農場</span>
+        <div class="btn-links">
+          <span class="badge badge-warn">要確認</span>
+          <a href="https://www.daiowasabi.co.jp" target="_blank" class="btn-link">公式サイト ↗</a>
+          <a href="https://maps.google.com/?q=大王わさび農場+安曇野" target="_blank" class="btn-link blue">Google マップ ↗</a>
+        </div>
+      </div>
+      <div class="info-row"><span class="info-label">入場料</span><span class="info-val">無料</span></div>
+      <div class="info-row"><span class="info-label">営業時間</span><span class="info-val">9:00〜17:00頃（要確認）</span><span class="info-sub">季節により変動</span></div>
+      <div class="info-row"><span class="info-label">ランチ</span><span class="info-val">わさび丼・わさびそば等（要確認）</span></div>
+      <div class="info-row"><span class="info-label">駐車場</span><span class="info-val">あり（無料）</span></div>
+      <div class="info-row"><span class="info-label">住所</span><span class="info-val">長野県安曇野市穂高3640</span></div>
+    </div>
+
+    <div class="card">
+      <div class="facility-title">
+        <span>安曇野しゃくなげの湯</span>
+        <div class="btn-links">
+          <span class="badge badge-ok">公式確認済み</span>
+          <a href="https://syakunagenoyu.info/" target="_blank" class="btn-link">公式サイト ↗</a>
+          <a href="https://maps.google.com/?q=安曇野しゃくなげの湯" target="_blank" class="btn-link blue">Google マップ ↗</a>
+        </div>
+      </div>
+      <div class="info-row"><span class="info-label">営業時間</span><span class="info-val">9:30〜21:30</span><span class="info-sub">最終受付20:30</span></div>
+      <div class="info-row"><span class="info-label">お食事処</span><span class="info-val">11:00〜14:00 / 17:00〜20:00</span></div>
+      <div class="info-row"><span class="info-label">定休日</span><span class="info-val">毎月第1水曜日</span><span class="info-sub">7/20（祝）は営業</span></div>
+      <div class="info-row"><span class="info-label">入浴料（大人）</span><span class="info-val">平日600円 / 休日・祝日700円</span></div>
+      <div class="info-row"><span class="info-label">タオル</span><span class="info-val">販売250円 / レンタルバスタオル150円</span><span class="info-sub">手ぶらOK</span></div>
+      <div class="info-row"><span class="info-label">TEL</span><span class="info-val">0263-88-4126</span></div>
+      <div class="info-row"><span class="info-label">住所</span><span class="info-val">長野県安曇野市穂高有明7726-4</span></div>
+    </div>
+
+    <div class="card">
+      <div class="facility-title">
+        <span>タイムズ安曇野穂高（穂高駅前駐車場）</span>
+        <div class="btn-links">
+          <span class="badge badge-ok">公式確認済み</span>
+          <a href="https://times-info.net/P20-nagano/C220/park-detail-BUK0083199/" target="_blank" class="btn-link">駐車場情報 ↗</a>
+          <a href="https://mt-parking-info.azumino-e-tabi.net/detail/hotaka.php" target="_blank" class="btn-link">空き状況 ↗</a>
+          <a href="https://maps.google.com/?q=タイムズ安曇野穂高" target="_blank" class="btn-link blue">Google マップ ↗</a>
+        </div>
+      </div>
+      <div class="info-row"><span class="info-label">収容台数</span><span class="info-val">約177台</span></div>
+      <div class="info-row"><span class="info-label">料金</span><span class="info-val">100円/60分　当日最大500円（24時まで）</span></div>
+      <div class="info-row"><span class="info-label">入出庫</span><span class="info-val">24時間可</span></div>
+      <div class="info-row"><span class="info-label">バス停まで</span><span class="info-val">徒歩6分（約450m）</span></div>
+      <div class="info-row"><span class="info-label">問い合わせ</span><span class="info-val">タイムズ24　0120-77-8924</span></div>
+    </div>
+  </div>
+
+  <!-- 費用 -->
+  <div class="section">
+    <div class="section-label">費用（1人あたり）</div>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">HALさん</div>
+        <div class="metric-val">約30,700円</div>
+        <div class="metric-sub">〜31,200円</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">同行者（各自）</div>
+        <div class="metric-val">約25,600円</div>
+        <div class="metric-sub">〜25,900円</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="cost-head">割り勘（3名均等・西会津起点）</div>
+      <div class="info-row"><span class="info-label">高速代（西会津⇔安曇野 往復）</span><span class="info-val">約3,100〜3,400円</span><span class="info-sub">往路深夜割引30%引き</span></div>
+      <div class="info-row"><span class="info-label">ガソリン代（西会津⇔穂高 往復860km）</span><span class="info-val">約2,437円</span><span class="info-sub">燃費20km/L・170円/L</span></div>
+      <div class="info-row"><span class="info-label">駐車場（2日分）</span><span class="info-val">約333円</span></div>
+      <div class="cost-head">HALさん単独負担（仙台⇔西会津）</div>
+      <div class="info-row"><span class="info-label">高速代（往復）</span><span class="info-val">約2,520円</span><span class="info-sub">往路深夜割引30%引き</span></div>
+      <div class="info-row"><span class="info-label">ガソリン代（往復300km）</span><span class="info-val">2,550円</span></div>
+      <div class="cost-head">全員共通</div>
+      <div class="info-row"><span class="info-label">定期バス往復</span><span class="info-val">3,000円</span></div>
+      <div class="info-row"><span class="info-label">燕山荘 1泊2食</span><span class="info-val">16,000円</span></div>
+      <div class="info-row"><span class="info-label">しゃくなげの湯（祝日）</span><span class="info-val">700円</span></div>
+    </div>
+  </div>
+
+  <!-- リンク集 -->
+  <div class="section">
+    <div class="section-label">リンク集</div>
+    <div class="link-grid">
+      <a href="https://nan-an.co.jp/nakabusa/" target="_blank" class="link-card">
+        <span class="link-name">南安タクシー（バス時刻表）</span>
+        <span class="link-desc">中房温泉行き定期バス・運行日確認</span>
+        <span class="link-url">nan-an.co.jp/nakabusa/</span>
+      </a>
+      <a href="https://www.enzanso.co.jp" target="_blank" class="link-card">
+        <span class="link-name">燕山荘 公式</span>
+        <span class="link-desc">予約・料金・アクセス</span>
+        <span class="link-url">enzanso.co.jp</span>
+      </a>
+      <a href="https://www.daiowasabi.co.jp" target="_blank" class="link-card">
+        <span class="link-name">大王わさび農場 公式</span>
+        <span class="link-desc">営業時間・ランチ情報（要確認）</span>
+        <span class="link-url">daiowasabi.co.jp</span>
+      </a>
+      <a href="https://syakunagenoyu.info/" target="_blank" class="link-card">
+        <span class="link-name">安曇野しゃくなげの湯 公式</span>
+        <span class="link-desc">営業時間・料金・お食事処</span>
+        <span class="link-url">syakunagenoyu.info</span>
+      </a>
+      <a href="https://mt-parking-info.azumino-e-tabi.net/detail/hotaka.php" target="_blank" class="link-card">
+        <span class="link-name">穂高駅前駐車場 空き状況</span>
+        <span class="link-desc">リアルタイム空き確認（安曇野市公式）</span>
+        <span class="link-url">mt-parking-info.azumino-e-tabi.net</span>
+      </a>
+      <a href="https://times-info.net/P20-nagano/C220/park-detail-BUK0083199/" target="_blank" class="link-card">
+        <span class="link-name">タイムズ安曇野穂高</span>
+        <span class="link-desc">駐車場料金・詳細情報</span>
+        <span class="link-url">times-info.net</span>
+      </a>
+      <a href="https://www.driveplaza.com/etc/dis/etc_dis_night/" target="_blank" class="link-card">
+        <span class="link-name">NEXCO東日本 深夜割引</span>
+        <span class="link-desc">深夜割引の最新制度を確認</span>
+        <span class="link-url">driveplaza.com</span>
+      </a>
+      <a href="https://www.azumikanko-taxi.co.jp/images/%E4%B8%AD%E6%88%BF%E7%B7%9A%E9%81%8B%E8%A1%8C%E8%A1%A8.pdf" target="_blank" class="link-card">
+        <span class="link-name">安曇観光タクシー 時刻表PDF</span>
+        <span class="link-desc">中房線運行表（PDF）</span>
+        <span class="link-url">azumikanko-taxi.co.jp</span>
+      </a>
+    </div>
+  </div>
+
+
+</div>
+
+<footer>
+  燕岳登山プラン 2026.7.18-20 ／ 情報は2026年6月時点。各施設の最新情報は必ず公式サイトでご確認ください。
+</footer>
+
+</body>
+</html>
