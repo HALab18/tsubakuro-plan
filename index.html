@@ -15,16 +15,17 @@
     --col-muted: #8a7268;
     --col-faint: #b8a498;
     --col-accent: #ff8fab;
+    --col-accent-text: #c2185b;
     --col-accent-light: #ffe3ec;
-    --col-blue: #5b9bd5;
+    --col-blue: #2f6da8;
     --col-blue-light: #e3f0fb;
-    --col-amber: #f0932b;
+    --col-amber: #c56a00;
     --col-amber-light: #fff2dd;
-    --col-red: #e66a6a;
+    --col-red: #c62828;
     --col-red-light: #ffe8e8;
-    --col-teal: #4ecdc4;
+    --col-teal: #1f8a80;
     --col-teal-light: #e0f7f5;
-    --col-purple: #a685e2;
+    --col-purple: #7e57c2;
     --col-purple-light: #f0e9fc;
     --grad-hero: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
     --grad-sun: linear-gradient(135deg, #ffd86b, #ff9a5a);
@@ -139,7 +140,7 @@
     font-size: 15px;
     font-weight: 800;
     letter-spacing: .04em;
-    color: var(--col-accent);
+    color: var(--col-accent-text);
     margin-bottom: 14px;
     display: flex;
     align-items: center;
@@ -176,7 +177,7 @@
   }
   .card-header.day1 { background: linear-gradient(120deg, var(--col-blue-light), #f0f8ff); color: var(--col-blue); }
   .card-header.day1::before { content: '🌙'; }
-  .card-header.day2 { background: linear-gradient(120deg, var(--col-accent-light), #fff5f8); color: var(--col-accent); }
+  .card-header.day2 { background: linear-gradient(120deg, var(--col-accent-light), #fff5f8); color: var(--col-accent-text); }
   .card-header.day2::before { content: '☀️'; }
 
   /* SCHEDULE ROWS */
@@ -205,7 +206,7 @@
   .sch-row.hl-bus { background: var(--col-blue-light); }
   .sch-row.hl-bus .sch-time { color: var(--col-blue); border-right-color: #c0d2e8; }
   .sch-row.hl-hike { background: var(--col-accent-light); }
-  .sch-row.hl-hike .sch-time { color: var(--col-accent); border-right-color: #c4d9be; }
+  .sch-row.hl-hike .sch-time { color: var(--col-accent-text); border-right-color: #f6c9d8; }
   .sch-row.hl-onsen { background: var(--col-amber-light); }
   .sch-row.hl-onsen .sch-time { color: var(--col-amber); border-right-color: #e8d8a0; }
 
@@ -221,11 +222,11 @@
     box-shadow: 0 2px 5px rgba(0,0,0,.06);
   }
   .badge-bus { background: var(--col-blue-light); color: var(--col-blue); }
-  .badge-hike { background: var(--col-accent-light); color: var(--col-accent); }
+  .badge-hike { background: var(--col-accent-light); color: var(--col-accent-text); }
   .badge-onsen { background: var(--col-amber-light); color: var(--col-amber); }
   .badge-lunch { background: var(--col-teal-light); color: var(--col-teal); }
   .badge-warn { background: var(--col-red-light); color: var(--col-red); }
-  .badge-ok { background: var(--col-accent-light); color: var(--col-accent); }
+  .badge-ok { background: var(--col-accent-light); color: var(--col-accent-text); }
 
   /* BUS TABLE */
   .bus-table { width: 100%; border-collapse: collapse; }
@@ -270,7 +271,7 @@
   .cost-head {
     font-size: 12px;
     font-weight: 800;
-    color: var(--col-accent);
+    color: var(--col-accent-text);
     background: linear-gradient(90deg, var(--col-accent-light), transparent);
     padding: 8px 16px;
     border-top: 1px dashed var(--col-border);
@@ -283,7 +284,7 @@
     font-weight: 800;
     font-size: 14px;
     background: linear-gradient(120deg, var(--col-accent-light), #fff0f5);
-    color: var(--col-accent);
+    color: var(--col-accent-text);
   }
 
   /* METRIC GRID */
@@ -311,7 +312,7 @@
     opacity: .12;
   }
   .metric-label { font-size: 12px; font-weight: 700; color: var(--col-muted); margin-bottom: 4px; }
-  .metric-val { font-size: 24px; font-weight: 800; color: var(--col-accent); }
+  .metric-val { font-size: 24px; font-weight: 800; color: var(--col-accent-text); }
   .metric-sub { font-size: 11px; color: var(--col-faint); margin-top: 2px; }
 
   /* LINKS */
@@ -340,7 +341,7 @@
     transform: translateY(-3px) rotate(-.5deg);
     box-shadow: 0 8px 18px rgba(255,143,171,.20);
   }
-  .link-name { font-size: 13px; font-weight: 800; color: var(--col-accent); }
+  .link-name { font-size: 13px; font-weight: 800; color: var(--col-accent-text); }
   .link-desc { font-size: 11px; color: var(--col-muted); }
   .link-url { font-size: 10px; color: var(--col-faint); margin-top: 2px; word-break: break-all; }
 
@@ -379,7 +380,7 @@
     border-radius: 14px;
     text-decoration: none;
     background: var(--col-accent-light);
-    color: var(--col-accent);
+    color: var(--col-accent-text);
     border: 1.5px solid #ffcfe0;
     transition: background .15s, transform .15s;
   }
@@ -692,7 +693,7 @@
     </div>
 
     <div class="card">
-      <div style="padding:10px 16px;font-size:13px;font-weight:700;color:var(--col-accent);border-bottom:1px solid var(--col-border);">▼ 下り　中房温泉 → 穂高駅</div>
+      <div style="padding:10px 16px;font-size:13px;font-weight:700;color:var(--col-accent-text);border-bottom:1px solid var(--col-border);">▼ 下り　中房温泉 → 穂高駅</div>
       <table class="bus-table">
         <thead>
           <tr>
