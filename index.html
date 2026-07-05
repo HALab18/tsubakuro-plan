@@ -11,9 +11,9 @@
     --col-bg: #fef6f0;
     --col-surface: #ffffff;
     --col-border: #f4dfd0;
-    --col-text: #4a3b34;
-    --col-muted: #8a7268;
-    --col-faint: #b8a498;
+    --col-text: #3a2e28;
+    --col-muted: #6b5349;
+    --col-faint: #8a7266;
     --col-accent: #ff8fab;
     --col-accent-text: #c2185b;
     --col-accent-light: #ffe3ec;
@@ -201,8 +201,8 @@
     padding: 10px 16px;
     font-size: 13px;
   }
-  .sch-main { font-weight: 500; color: var(--col-text); }
-  .sch-note { font-size: 11px; color: var(--col-faint); margin-top: 2px; }
+  .sch-main { font-weight: 700; color: var(--col-text); }
+  .sch-note { font-size: 12px; color: var(--col-muted); margin-top: 3px; }
   .sch-row.hl-bus { background: var(--col-blue-light); }
   .sch-row.hl-bus .sch-time { color: var(--col-blue); border-right-color: #c0d2e8; }
   .sch-row.hl-hike { background: var(--col-accent-light); }
@@ -248,7 +248,7 @@
   .bus-table tr:last-child td { border-bottom: none; }
   .bus-table tr.star { background: var(--col-blue-light); }
   .bus-table tr.star td { color: var(--col-blue); font-weight: 700; }
-  .bus-note { font-size: 11px; color: var(--col-faint); }
+  .bus-note { font-size: 12px; color: var(--col-muted); }
 
   /* INFO ROWS */
   .info-row {
@@ -262,9 +262,9 @@
     flex-wrap: wrap;
   }
   .info-row:first-of-type { border-top: none; }
-  .info-label { color: var(--col-muted); flex: 1; min-width: 120px; }
-  .info-val { font-weight: 500; color: var(--col-text); }
-  .info-sub { font-size: 11px; color: var(--col-faint); }
+  .info-label { color: var(--col-muted); font-weight: 500; flex: 1; min-width: 120px; }
+  .info-val { font-weight: 700; color: var(--col-text); }
+  .info-sub { font-size: 12px; color: var(--col-muted); }
 
   /* COST TABLE */
   .cost-section { margin-bottom: 8px; }
@@ -342,8 +342,8 @@
     box-shadow: 0 8px 18px rgba(255,143,171,.20);
   }
   .link-name { font-size: 13px; font-weight: 800; color: var(--col-accent-text); }
-  .link-desc { font-size: 11px; color: var(--col-muted); }
-  .link-url { font-size: 10px; color: var(--col-faint); margin-top: 2px; word-break: break-all; }
+  .link-desc { font-size: 12px; color: var(--col-muted); }
+  .link-url { font-size: 11px; color: var(--col-faint); margin-top: 2px; word-break: break-all; }
 
   /* WARN */
   .warn-list { display: flex; flex-direction: column; gap: 6px; }
