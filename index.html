@@ -2,8 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>燕岳登山プラン 2025.7.18-20</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#f0567d">
+<meta name="apple-mobile-web-app-title" content="燕岳">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
   :root {
     --col-bg: #fef6f0;
@@ -46,7 +55,7 @@
   .hero {
     background: var(--grad-hero);
     color: #fff;
-    padding: 54px 24px 46px;
+    padding: calc(54px + env(safe-area-inset-top, 0px)) 24px 46px;
     text-align: center;
     position: relative;
     overflow: hidden;
